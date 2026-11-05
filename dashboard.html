@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Power BI Dashboards | Sathya N</title>
+
+    <!-- Boxicons -->
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* ================= GLOBAL ================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(0, 238, 255, 0.12),
+                    transparent 35%
+                ),
+                #050f1f;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ================= HEADER ================= */
+
+        .dashboard-header {
+            text-align: center;
+            padding: 70px 20px 45px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-header i {
+            font-size: 55px;
+            color: #0ef;
+            text-shadow:
+                0 0 10px #0ef,
+                0 0 25px #0ef;
+        }
+
+        .dashboard-header h1 {
+            margin-top: 15px;
+            font-size: 48px;
+            letter-spacing: 1px;
+        }
+
+        .dashboard-header h1 span {
+            color: #0ef;
+            text-shadow: 0 0 15px rgba(0, 238, 255, 0.6);
+        }
+
+        .dashboard-header p {
+            max-width: 750px;
+            margin: 18px auto 0;
+            color: #b8c4d0;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* ================= DASHBOARD CONTAINER ================= */
+
+        .dashboard-container {
+            width: 92%;
+            max-width: 1250px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            padding-bottom: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ================= DASHBOARD CARD ================= */
+
+        .dashboard-card {
+            background: rgba(8, 27, 41, 0.88);
+            border: 1px solid rgba(0, 238, 255, 0.25);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 0 10px rgba(0, 238, 255, 0.08);
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+            overflow: hidden;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            border-color: #0ef;
+            box-shadow:
+                0 0 12px rgba(0, 238, 255, 0.5),
+                0 0 35px rgba(0, 238, 255, 0.18);
+        }
+
+        /* ================= CARD TITLE ================= */
+
+        .dashboard-number {
+            color: #0ef;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .dashboard-card h2 {
+            margin: 10px 0 18px;
+            font-size: 24px;
+            line-height: 1.4;
+        }
+
+        /* ================= DASHBOARD IMAGE ================= */
+
+        .dashboard-image {
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 238, 255, 0.25);
+            background: #081b29;
+        }
+
+        .dashboard-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .dashboard-card:hover .dashboard-image img {
+            transform: scale(1.02);
+        }
+
+        /* ================= DESCRIPTION ================= */
+
+        .dashboard-card p {
+            color: #aeb9c5;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-top: 17px;
+        }
+
+        /* ================= BACK BUTTON ================= */
+
+        .back-section {
+            text-align: center;
+            padding: 10px 20px 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: #0ef;
+            color: #081b29;
+            text-decoration: none;
+            border: 2px solid #0ef;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 0 10px #0ef;
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #081b29;
+            color: #0ef;
+            box-shadow:
+                0 0 10px #0ef,
+                0 0 25px #0ef,
+                0 0 45px rgba(0, 238, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid rgba(0, 238, 255, 0.15);
+            color: #71808d;
+            font-size: 13px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ================= SNOW CANVAS ================= */
+
+        #snow-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* ================= CUSTOM CYAN CURSOR ================= */
+
+        @media (pointer: fine) {
+            body,
+            a,
+            button {
+                cursor: none;
+            }
+
+            #custom-cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 12px;
+                height: 12px;
+                background: #fff;
+                border-radius: 50%;
+                box-shadow:
+                    0 0 6px #0ef,
+                    0 0 15px #0ef,
+                    0 0 25px rgba(0, 238, 255, 0.7);
+                pointer-events: none;
+                z-index: 10001;
+                transform: translate(-50%, -50%);
+                display: none;
+            }
+
+            #cursor-trail {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 32px;
+                height: 32px;
+                border: 1px solid rgba(0, 238, 255, 0.85);
+                border-radius: 50%;
+                box-shadow: 0 0 12px rgba(0, 238, 255, 0.25);
+                pointer-events: none;
+                z-index: 10000;
+                transform: translate(-50%, -50%);
+                transition:
+                    width 0.2s ease,
+                    height 0.2s ease,
+                    border-color 0.2s ease,
+                    box-shadow 0.2s ease;
+                display: none;
+            }
+
+            #cursor-trail.cursor-hover {
+                width: 44px;
+                height: 44px;
+                border-color: #fff;
+                box-shadow:
+                    0 0 12px rgba(0, 238, 255, 0.5),
+                    0 0 25px rgba(0, 238, 255, 0.25);
+            }
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+            .dashboard-header h1 {
+                font-size: 38px;
+            }
+
+            .dashboard-image {
+                height: 420px;
+            }
+
+            .dashboard-container {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .dashboard-header {
+                padding: 45px 15px 30px;
+            }
+
+            .dashboard-header i {
+                font-size: 45px;
+            }
+
+            .dashboard-header h1 {
+                font-size: 30px;
+            }
+
+            .dashboard-header p {
+                font-size: 14px;
+            }
+
+            .dashboard-container {
+                width: 92%;
+                gap: 25px;
+            }
+
+            .dashboard-card {
+                padding: 15px;
+                border-radius: 17px;
+            }
+
+            .dashboard-card h2 {
+                font-size: 20px;
+            }
+
+            .dashboard-image {
+                height: 230px;
+            }
+
+            .dashboard-card p {
+                font-size: 13px;
+            }
+
+            .back-btn {
+                padding: 11px 20px;
+            }
+        }
+
+        /* ================= REDUCED MOTION ================= */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            #cursor-trail {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="dashboard-header">
+        <i class="bx bxs-dashboard" aria-hidden="true"></i>
+
+        <h1>
+            My <span>Power BI Dashboards</span>
+        </h1>
+
+        <p>
+            A collection of dashboards created to transform business
+            data into meaningful insights, KPIs and visual reports.
+        </p>
+    </header>
+
+    <!-- ================= DASHBOARD COLLECTION ================= -->
+
+    <main class="dashboard-container">
+
+        <!-- DASHBOARD 1 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 01</span>
+            <h2>Executive Dashboard</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="executive dash 1 .png"
+                    alt="Executive Power BI Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                Executive dashboard presenting high-level business
+                performance, important metrics and key insights.
+            </p>
+        </article>
+
+        <!-- DASHBOARD 2 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 02</span>
+            <h2>Sales Performance Dashboard</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="sales dash 2.png"
+                    alt="Sales Performance Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                Visual analysis of sales performance using KPIs,
+                trends and interactive business visuals.
+            </p>
+        </article>
+
+        <!-- DASHBOARD 3 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 03</span>
+            <h2>Customer Executive Dashboard</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="customer dash 3.png"
+                    alt="Customer Executive Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                Customer-focused reporting designed to highlight
+                customer trends, performance and useful business insights.
+            </p>
+        </article>
+
+        <!-- DASHBOARD 4 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 04</span>
+            <h2>Product Analytics Dashboard</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="product dash 4.png"
+                    alt="Product Analytics Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                Product-level visual analysis designed to explore
+                performance, trends and relevant business metrics.
+            </p>
+        </article>
+
+        <!-- DASHBOARD 5 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 05</span>
+            <h2>Inventory Dashboard</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="inventory dash 5.png"
+                    alt="Inventory Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                Inventory reporting that helps present stock levels,
+                product availability and inventory performance.
+            </p>
+        </article>
+
+        <!-- DASHBOARD 6 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 06</span>
+            <h2>Shipment Analysis Dashboard</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="shipment dash 6.png"
+                    alt="Shipment Analysis Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                Shipment-focused reporting designed to explore
+                delivery information and logistics performance.
+            </p>
+        </article>
+
+        <!-- DASHBOARD 7 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 07</span>
+            <h2>Store Analysis Dashboard</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="store dash 7.png"
+                    alt="Store Analysis Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                Store-level analysis presenting performance patterns
+                and useful comparisons across store data.
+            </p>
+        </article>
+
+        <!-- DASHBOARD 8 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 08</span>
+            <h2>Marketing Dashboard</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="marketing dashboard.png"
+                    alt="Marketing Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                Marketing-focused reporting designed to present
+                campaign metrics and key business indicators.
+            </p>
+        </article>
+
+        <!-- DASHBOARD 9 -->
+
+        <article class="dashboard-card">
+            <span class="dashboard-number">Dashboard 09</span>
+            <h2>Business Insights &amp; Executive Summary</h2>
+
+            <div class="dashboard-image">
+                <img
+                    src="Business Insights & Executive Summary.png"
+                    alt="Business Insights and Executive Summary Dashboard"
+                    loading="lazy"
+                >
+            </div>
+
+            <p>
+                A business reporting dashboard combining visualizations
+                and insights to support data-driven decision-making.
+            </p>
+        </article>
+
+    </main>
+
+    <!-- ================= BACK BUTTON ================= -->
+
+    <div class="back-section">
+        <a href="index.html" class="back-btn">
+            <i class="bx bx-arrow-back" aria-hidden="true"></i>
+            Back To Portfolio
+        </a>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+        &copy; 2026 Sathya N. All Rights Reserved.
+    </footer>
+
+    <!-- ================= SNOW CANVAS ================= -->
+
+    <canvas id="snow-canvas" aria-hidden="true"></canvas>
+
+    <!-- ================= SNOW ANIMATION ================= -->
+
+    <script>
+        const snowCanvas = document.getElementById("snow-canvas");
+        const snowCtx = snowCanvas.getContext("2d");
+
+        let snowflakes = [];
+
+        const snowSettings = {
+            count: 100,
+            minSize: 0.3,
+            maxSize: 1.2,
+            speed: 1.2,
+            glow: 3,
+            opacity: 0.7
+        };
+
+        function resizeSnowCanvas() {
+            const pixelRatio = Math.min(
+                window.devicePixelRatio || 1,
+                2
+            );
+
+            snowCanvas.width = window.innerWidth * pixelRatio;
+            snowCanvas.height = window.innerHeight * pixelRatio;
+
+            snowCanvas.style.width = window.innerWidth + "px";
+            snowCanvas.style.height = window.innerHeight + "px";
+
+            snowCtx.setTransform(
+                pixelRatio, 0, 0, pixelRatio, 0, 0
+            );
+        }
+
+        function createSnowflake(initial = false) {
+            return {
+                x: Math.random() * window.innerWidth,
+                y: initial
+                    ? Math.random() * window.innerHeight
+                    : -10,
+
+                size: Math.random() *
+                    (snowSettings.maxSize - snowSettings.minSize)
+                    + snowSettings.minSize,
+
+                speed: Math.random() * snowSettings.speed + 0.3,
+
+                drift: Math.random() * 0.8 - 0.4,
+
+                opacity: Math.random() * snowSettings.opacity + 0.2
+            };
+        }
+
+        function initSnow() {
+            snowflakes = [];
+
+            for (let i = 0; i < snowSettings.count; i++) {
+                snowflakes.push(createSnowflake(true));
+            }
+        }
+
+        function animateSnow() {
+            snowCtx.clearRect(
+                0,
+                0,
+                window.innerWidth,
+                window.innerHeight
+            );
+
+            snowflakes.forEach((snow, index) => {
+                snow.y += snow.speed;
+                snow.x += snow.drift;
+
+                if (snow.y > window.innerHeight + 10) {
+                    snowflakes[index] = createSnowflake();
+                }
+
+                if (snow.x > window.innerWidth + 10) {
+                    snow.x = -10;
+                }
+
+                if (snow.x < -10) {
+                    snow.x = window.innerWidth + 10;
+                }
+
+                snowCtx.beginPath();
+
+                snowCtx.arc(
+                    snow.x,
+                    snow.y,
+                    snow.size,
+                    0,
+                    Math.PI * 2
+                );
+
+                snowCtx.fillStyle =
+                    `rgba(255, 255, 255, ${snow.opacity})`;
+
+                snowCtx.shadowBlur = snowSettings.glow;
+                snowCtx.shadowColor = "#ffffff";
+                snowCtx.fill();
+            });
+
+            snowCtx.shadowBlur = 0;
+            requestAnimationFrame(animateSnow);
+        }
+
+        resizeSnowCanvas();
+        initSnow();
+        animateSnow();
+
+        window.addEventListener("resize", () => {
+            resizeSnowCanvas();
+            initSnow();
+        });
+    </script>
+
+    <!-- ================= CUSTOM CURSOR ANIMATION ================= -->
+
+    <script>
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursor = document.createElement("div");
+            cursor.id = "custom-cursor";
+            cursor.setAttribute("aria-hidden", "true");
+
+            const trail = document.createElement("div");
+            trail.id = "cursor-trail";
+            trail.setAttribute("aria-hidden", "true");
+
+            document.body.appendChild(trail);
+            document.body.appendChild(cursor);
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let trailX = 0;
+            let trailY = 0;
+            let mouseMoved = false;
+
+            document.addEventListener("mousemove", function (event) {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                mouseMoved = true;
+
+                cursor.style.left = mouseX + "px";
+                cursor.style.top = mouseY + "px";
+
+                cursor.style.display = "block";
+                trail.style.display = "block";
+            });
+
+            function animateTrail() {
+                if (mouseMoved) {
+                    trailX += (mouseX - trailX) * 0.15;
+                    trailY += (mouseY - trailY) * 0.15;
+
+                    trail.style.left = trailX + "px";
+                    trail.style.top = trailY + "px";
+                }
+
+                requestAnimationFrame(animateTrail);
+            }
+
+            document.addEventListener("mouseleave", function () {
+                cursor.style.display = "none";
+                trail.style.display = "none";
+            });
+
+            document.addEventListener("mouseenter", function () {
+                if (mouseMoved) {
+                    cursor.style.display = "block";
+                    trail.style.display = "block";
+                }
+            });
+
+            const hoverElements = document.querySelectorAll(
+                "a, button, .dashboard-card, .dashboard-image"
+            );
+
+            hoverElements.forEach(function (element) {
+                element.addEventListener("mouseenter", function () {
+                    trail.classList.add("cursor-hover");
+                });
+
+                element.addEventListener("mouseleave", function () {
+                    trail.classList.remove("cursor-hover");
+                });
+            });
+
+            animateTrail();
+        }
+    </script>
+
+</body>
+</html>

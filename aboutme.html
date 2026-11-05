@@ -1,0 +1,966 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More About Me | Sathya N</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #081b29;
+            color: #ededed;
+        }
+
+        /* NAVIGATION */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 8%;
+            background: rgba(5, 17, 41, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 238, 255, 0.2);
+        }
+
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .logo span,
+        .invite-box h1 span,
+        .section-title span,
+        .final-section h2 span {
+            color: #0ef;
+        }
+
+        .back-btn {
+            color: #0ef;
+            text-decoration: none;
+            border: 1px solid #0ef;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #0ef;
+            color: #081b29;
+            box-shadow: 0 0 20px #0ef;
+        }
+
+        /* HERO */
+        .invitation {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+            background:
+                radial-gradient(circle at top, rgba(0, 238, 255, 0.12), transparent 40%),
+                #081b29;
+        }
+
+        .invite-box {
+            width: min(850px, 95%);
+            padding: 65px 45px;
+            border: 1px solid rgba(0, 238, 255, 0.5);
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(0, 238, 255, 0.15),
+                inset 0 0 30px rgba(0, 238, 255, 0.04);
+            position: relative;
+        }
+
+        .invite-box::before,
+        .invite-box::after {
+            content: "✦";
+            position: absolute;
+            top: 18px;
+            color: #0ef;
+            font-size: 25px;
+        }
+
+        .invite-box::before { left: 25px; }
+        .invite-box::after { right: 25px; }
+
+        .small-title {
+            color: #0ef;
+            letter-spacing: 4px;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .invite-box h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .invite-box h3 {
+            font-size: 20px;
+            font-weight: 400;
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .invite-line {
+            width: 100px;
+            height: 2px;
+            background: #0ef;
+            margin: 20px auto;
+            box-shadow: 0 0 10px #0ef;
+        }
+
+        .invite-box p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.8;
+            color: #bbb;
+            font-size: 16px;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 28px;
+            color: #081b29;
+            background: #0ef;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(0, 238, 255, 0.4);
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px #0ef;
+        }
+
+        /* COMMON SECTIONS */
+        .section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 50px;
+        }
+
+        /* QUESTIONS */
+        .questions {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .question-card {
+            padding: 25px;
+            border: 1px solid rgba(0, 238, 255, 0.2);
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            border-color: #0ef;
+            box-shadow: 0 0 20px rgba(0, 238, 255, 0.12);
+        }
+
+        .question-number {
+            color: #0ef;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .question-card h3 {
+            font-size: 18px;
+            margin: 8px 0 12px;
+            color: #fff;
+        }
+
+        .question-card p {
+            color: #aaa;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* CERTIFICATIONS */
+        .certifications {
+            background: #071622;
+        }
+
+        .certificate-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .certificate-card {
+            background: #081b29;
+            border: 1px solid rgba(0, 238, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            transition: 0.3s;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-7px);
+            border-color: #0ef;
+            box-shadow: 0 0 25px rgba(0, 238, 255, 0.15);
+        }
+
+        .certificate-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .certificate-card h3 {
+            margin: 15px 5px 5px;
+            font-size: 17px;
+        }
+
+        .certificate-card p {
+            margin: 0 5px 15px;
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        .view-certificate,
+        .portfolio-btn {
+            display: inline-block;
+            padding: 10px 22px;
+            background: #0ef;
+            color: #081b29;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 2px solid #0ef;
+            box-shadow: 0 0 10px #0ef;
+            transition: 0.3s ease;
+        }
+
+        .view-certificate {
+            margin: 0 5px 5px;
+        }
+
+        .view-certificate:hover,
+        .portfolio-btn:hover {
+            background: #081b29;
+            color: #0ef;
+            box-shadow: 0 0 10px #0ef,
+                0 0 25px #0ef,
+                0 0 45px #0ef;
+            transform: translateY(-3px);
+        }
+
+        /* FINAL SECTION */
+        .final-section {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .final-section h2 {
+            font-size: 40px;
+        }
+
+        .final-section p {
+            color: #aaa;
+            max-width: 650px;
+            margin: 20px auto;
+            line-height: 1.8;
+        }
+
+        .portfolio-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 16px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 12px;
+            background: rgb(7, 85, 91);
+            font-size: 13px;
+            color: #fff;
+        }
+
+        /* SNOW CANVAS */
+        #snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* ANIMATED CYAN CURSOR */
+        @media (pointer: fine) {
+            body,
+            a,
+            button {
+                cursor: none;
+            }
+
+            #custom-cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 12px;
+                height: 12px;
+                background: #fff;
+                border-radius: 50%;
+                box-shadow: 0 0 6px #0ef,
+                    0 0 15px #0ef,
+                    0 0 25px rgba(0, 238, 255, 0.7);
+                pointer-events: none;
+                z-index: 10001;
+                transform: translate(-50%, -50%);
+                display: none;
+            }
+
+            #cursor-trail {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 32px;
+                height: 32px;
+                border: 1px solid rgba(0, 238, 255, 0.75);
+                border-radius: 50%;
+                box-shadow: 0 0 12px rgba(0, 238, 255, 0.25);
+                pointer-events: none;
+                z-index: 10000;
+                transform: translate(-50%, -50%);
+                transition: width 0.2s ease,
+                    height 0.2s ease,
+                    border-color 0.2s ease;
+                display: none;
+            }
+
+            #cursor-trail.cursor-hover {
+                width: 44px;
+                height: 44px;
+                border-color: #fff;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #cursor-trail {
+                transition: none;
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            .questions {
+                grid-template-columns: 1fr;
+            }
+
+            .certificate-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .invite-box {
+                padding: 50px 25px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 35px;
+            }
+
+            .back-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+
+            .top-nav {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="top-nav">
+        <a href="index.html" class="logo">SATHYA<span> N</span></a>
+        <a href="index.html" class="back-btn">
+            <i class="bx bx-arrow-back"></i> Portfolio
+        </a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="invitation">
+        <div class="invite-box">
+            <div class="small-title">YOU ARE INVITED</div>
+            <h1>SATHYA <span>N</span></h1>
+            <h3>More About Me</h3>
+            <div class="invite-line"></div>
+
+            <p>
+                Welcome to my professional journey.<br>
+                Explore my education, technical expertise, projects,
+                certifications, and career goals — a reflection of my
+                continuous learning, growth, and passion for technology.
+            </p>
+
+            <a href="#questions" class="explore-btn">
+                Start Exploring <i class="bx bx-down-arrow-alt"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 20 QUESTIONS -->
+    <section class="section" id="questions">
+        <h2 class="section-title">Get To Know <span>Me</span></h2>
+        <p class="section-subtitle">Few questions that tell my story</p>
+
+        <div class="questions">
+
+            <div class="question-card">
+                <span class="question-number">01</span>
+                <h3>Who am I?</h3>
+                <p>
+                    I’m Sathya, and my passion for technology started when
+                    I first used a computer in 5th grade, sparking my
+                    curiosity about how technology works. That early
+                    interest inspired me to choose BCA and pursue a career
+                    in the technology field.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">02</span>
+                <h3>Why did I choose BCA?</h3>
+                <p>
+                    My strong interest in computers and technology led me
+                    to choose this path for my future. It also felt like a
+                    practical choice that gave me financial confidence.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">03</span>
+                <h3>What made me interested in technology?</h3>
+                <p>
+                    When I first used a mobile phone as a child, I became
+                    curious about how technology worked behind every click.
+                    It felt like magic to me, and that curiosity became the
+                    beginning of my passion for technology.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">04</span>
+                <h3>Why did I choose Data Analytics?</h3>
+                <p>
+                    I chose Data Analytics because I wanted to enter the
+                    technology industry at an entry level while building
+                    on my existing technical knowledge. It gives me an
+                    opportunity to apply my skills, learn continuously,
+                    and grow in the tech field.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">05</span>
+                <h3>What are my strongest technical skills?</h3>
+                <p>
+                    My strongest technical skills include Python, Power BI,
+                    MySQL, HTML, CSS, MS Office, GitHub, Data Analytics,
+                    Data Modeling, and Data Preprocessing.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">06</span>
+                <h3>Which programming language do I enjoy?</h3>
+                <p>
+                    Python is one of my favorite programming languages
+                    because I find it easy to learn while still being
+                    powerful enough to build many different things.
+                    I particularly enjoy working with libraries such as
+                    NumPy, Pandas, Matplotlib, Faker, and Tkinter.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">07</span>
+                <h3>What database technologies do I know?</h3>
+                <p>
+                    I have hands-on knowledge of SQL, RDBMS, and MySQL,
+                    and I enjoy writing queries and organizing data
+                    efficiently. I mainly use MySQL Workbench to work
+                    with databases, write queries, and manage data.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">08</span>
+                <h3>What tools do I use for analytics?</h3>
+                <p>
+                    Power BI, Power Query, DAX, Excel, Python, Pandas,
+                    NumPy, Faker, Matplotlib and MySQL.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">09</span>
+                <h3>What kind of projects have I built?</h3>
+                <p>
+                    1. FalconBuy — Retail Business Intelligence &amp; AI
+                    Decision Support System.<br><br>
+                    2. Smart Putaway System — Data-Driven Inventory
+                    Analytics App.<br><br>
+                    3. E-Commerce Analytics Web Application.<br><br>
+                    See the Portfolio Project Section for details.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">10</span>
+                <h3>What is my favourite project?</h3>
+                <p>
+                    My three favorite projects are unique in their own way,
+                    and each one is designed to address a specific business
+                    need. Among them, FalconBuy is the most unique to me
+                    because I created it entirely from my own imagination —
+                    from the logo and dataset creation to the complete
+                    analysis.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">11</span>
+                <h3>What did I learn from my projects?</h3>
+                <p>
+                    Through my projects, I learned how to identify business
+                    risks, understand customer needs and wants, handle and
+                    secure data, and turn data into meaningful business
+                    insights. I also learned how analytics can support
+                    better decisions, improve sales and distribution,
+                    and help businesses grow.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">12</span>
+                <h3>What internships have I completed?</h3>
+                <p>
+                    I completed my Full Stack Development Internship at
+                    Big Bucks Innovation Pvt. Ltd. from May 2025 to August
+                    2025. I also completed an Artificial Intelligence
+                    Internship at VIPS.TECH Services and Solutions from
+                    August 2025 to October 2025 and participated in a
+                    certified Power BI program, where I completed
+                    multiple projects.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">13</span>
+                <h3>What certifications have I earned?</h3>
+                <p>
+                    • Full Stack Development Internship Certificate —
+                    Big Bucks Innovation Pvt. Ltd.<br>
+                    • Artificial Intelligence Internship Certificate —
+                    VIPS.TECH Services<br>
+                    • Power BI Program Certificate — CASS Academy<br>
+                    • Python Full Stack Course Certification — CSC<br>
+                    • 1st Prize Certificate — College-Level Hackathon
+                    &amp; Debugging Competition<br>
+                    • Participation Certificate — International Conference:
+                    “AI vs Human Intelligence”<br>
+                    • IBM Data Analytics International Certificate
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">14</span>
+                <h3>What am I currently learning?</h3>
+                <p>
+                    Currently, I am focusing on Data Science and
+                    AI-integrated technologies while strengthening my
+                    knowledge and interest in Data Analytics. I am also
+                    learning advanced topics such as Databricks, AI,
+                    Large Language Models (LLMs), Machine Learning,
+                    and related technologies.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">15</span>
+                <h3>What type of problems do I enjoy solving?</h3>
+                <p>
+                    I enjoy working with data, finding patterns,
+                    solving technical problems and building useful
+                    solutions.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">16</span>
+                <h3>What are my professional strengths?</h3>
+                <p>
+                    My professional strengths include analytical thinking, problem-solving, continuous learning, and a strong interest in software and web development. 
+                    I focus on building practical technology solutions, developing efficient applications, and managing databases
+                    while leveraging data analysis to support informed decision-making and address real-world business needs.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">17</span>
+                <h3>What type of role am I looking for?</h3>
+                <p>
+                    I am interested in technology roles such as Frontend Developer,
+                    Backend Developer, python Developer, Data
+                    Analyst, and other relevant software roles. I have
+                    built my skills through projects, internships,
+                    certifications, and continuous learning. I look forward
+                    to working with an organization where I can contribute
+                    my skills, grow professionally, and support business
+                    development. My contact details are available in the
+                    Contact section of my portfolio. Thank you for
+                    visiting my portfolio.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">18</span>
+                <h3>What is my short-term career goal?</h3>
+                <p>
+                    To begin my professional career in a technology-driven
+                    organization and gain practical industry experience.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">19</span>
+                <h3>Where do I see myself growing?</h3>
+                <p>
+                    I see myself growing into a strong technology
+                    professional by continuously developing my skills in
+                    Software, Data Science, AI, and business-focused
+                    technology solutions. My goal is to take on greater
+                    responsibilities, solve real-world business problems,
+                    and contribute meaningful value to the organization
+                    through technology and data.
+                </p>
+            </div>
+
+            <div class="question-card">
+                <span class="question-number">20</span>
+                <h3>What do I want visitors to remember about me?</h3>
+                <p>
+                    I want visitors to remember me as a curious, passionate,
+                    and continuously learning technology enthusiast who
+                    turns ideas and data into meaningful solutions.
+                    I believe in learning by doing, solving real-world
+                    problems, and creating value through technology.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section certifications" id="certifications">
+        <h2 class="section-title">My <span>Certifications</span></h2>
+        <p class="section-subtitle">
+            A collection of my learning achievements and certificates
+        </p>
+
+        <div class="certificate-grid">
+
+            <div class="certificate-card">
+                <img src="SLA.jpeg" alt="IBM Data Analytics Certificate">
+                <h3>Data Analytics Certification</h3>
+                <p>IBM Data Analyst Professional Certificate</p>
+                <a href="SLA.jpeg" target="_blank" rel="noopener noreferrer"
+                    class="view-certificate">View Certificate</a>
+            </div>
+
+            <div class="certificate-card">
+                <img src="BIG BUCKS INTERN certify.jpg"
+                    alt="Full Stack Development Internship Certificate">
+                <h3>Full Stack Development Intern</h3>
+                <p>BIG-SI-BUCKS Innovation Private Limited | Thoraipakkam, Chennai</p>
+                <a href="BIG BUCKS INTERN certify.jpg"
+                    target="_blank" rel="noopener noreferrer"
+                    class="view-certificate">View Certificate</a>
+            </div>
+
+            <div class="certificate-card">
+                <img src="vips intern.jpg" alt="AI Internship Certificate">
+                <h3>AI Internship Certificate</h3>
+                <p>VIPS.TECH Services — AI Training Program | Nallur, Red Hills</p>
+                <a href="VIPS TECH INTERN AND PROJECT.pdf"
+                    target="_blank" rel="noopener noreferrer"
+                    class="view-certificate">View Certificate</a>
+            </div>
+
+            <div class="certificate-card">
+                <img src="POWERBI CERTIFICATE from CASS ACADEMY.jpg"
+                    alt="Power BI Certificate">
+                <h3>Power BI Certificate</h3>
+                <p>Certified Participant, Cyber Softskill Solutions Academy Pvt. Ltd</p>
+                <a href="POWERBI CERTIFICATE from CASS ACADEMY.jpg"
+                    target="_blank" rel="noopener noreferrer"
+                    class="view-certificate">View Certificate</a>
+            </div>
+
+            <div class="certificate-card">
+                <img src="internation confrence certify.jpeg"
+                    alt="International Conference Certificate">
+                <h3>International Conference Certificate</h3>
+                <p>Participation Certificate — AI vs Human Intelligence</p>
+                <a href="internation confrence certify.jpeg"
+                    target="_blank" rel="noopener noreferrer"
+                    class="view-certificate">View Certificate</a>
+            </div>
+
+            <div class="certificate-card">
+                <img src="CSC certify.jpeg"
+                    alt="Advanced Diploma in Python Programming Certificate">
+                <h3>Advanced Diploma in Python Programming (ADPP)</h3>
+                <p>Computer Software College ISO 9001</p>
+                <a href="CSC certify.jpeg"
+                    target="_blank" rel="noopener noreferrer"
+                    class="view-certificate">View Certificate</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FINAL MESSAGE -->
+    <section class="final-section">
+        <h2>Thanks For <span>Visiting</span></h2>
+        <p>
+            Every project, course, internship and certificate is part of
+            my journey. I am still learning new technologies, building
+            projects, and looking forward to career opportunities.
+        </p>
+        <a href="index.html" class="portfolio-btn">Back To Portfolio</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>© 2026 Sathya N. All Rights Reserved</footer>
+
+    <!-- SNOW CANVAS -->
+    <canvas id="snow-canvas" aria-hidden="true"></canvas>
+
+    <script>
+        /* ================= SNOW EFFECT ================= */
+
+        const snowCanvas = document.getElementById("snow-canvas");
+        const snowCtx = snowCanvas.getContext("2d");
+
+        let snowflakes = [];
+
+        const snowSettings = {
+            count: 100,
+            minSize: 0.3,
+            maxSize: 1.2,
+            speed: 1.2,
+            glow: 3,
+            opacity: 0.7
+        };
+
+        function resizeSnowCanvas() {
+            snowCanvas.width = window.innerWidth;
+            snowCanvas.height = window.innerHeight;
+        }
+
+        function createSnowflake(initial = false) {
+            return {
+                x: Math.random() * snowCanvas.width,
+                y: initial ? Math.random() * snowCanvas.height : -10,
+                size: Math.random() *
+                    (snowSettings.maxSize - snowSettings.minSize) +
+                    snowSettings.minSize,
+                speed: Math.random() * snowSettings.speed + 0.3,
+                drift: Math.random() * 0.8 - 0.4,
+                opacity: Math.random() * snowSettings.opacity + 0.2
+            };
+        }
+
+        function initSnow() {
+            snowflakes = [];
+
+            for (let i = 0; i < snowSettings.count; i++) {
+                snowflakes.push(createSnowflake(true));
+            }
+        }
+
+        function animateSnow() {
+            snowCtx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
+
+            snowflakes.forEach((snow, index) => {
+                snow.y += snow.speed;
+                snow.x += snow.drift;
+
+                if (snow.y > snowCanvas.height + 10) {
+                    snowflakes[index] = createSnowflake();
+                }
+
+                if (snow.x > snowCanvas.width + 10) {
+                    snow.x = -10;
+                }
+
+                if (snow.x < -10) {
+                    snow.x = snowCanvas.width + 10;
+                }
+
+                snowCtx.beginPath();
+                snowCtx.arc(snow.x, snow.y, snow.size, 0, Math.PI * 2);
+                snowCtx.fillStyle =
+                    `rgba(255, 255, 255, ${snow.opacity})`;
+                snowCtx.shadowBlur = snowSettings.glow;
+                snowCtx.shadowColor = "#ffffff";
+                snowCtx.fill();
+            });
+
+            snowCtx.shadowBlur = 0;
+            requestAnimationFrame(animateSnow);
+        }
+
+        function startSnow() {
+            resizeSnowCanvas();
+            initSnow();
+            animateSnow();
+        }
+
+        window.addEventListener("resize", function () {
+            resizeSnowCanvas();
+            initSnow();
+        });
+
+        startSnow();
+
+
+        /* ================= ANIMATED CYAN CURSOR ================= */
+
+        if (window.matchMedia("(pointer: fine)").matches) {
+
+            const cursor = document.createElement("div");
+            cursor.id = "custom-cursor";
+            cursor.setAttribute("aria-hidden", "true");
+
+            const trail = document.createElement("div");
+            trail.id = "cursor-trail";
+            trail.setAttribute("aria-hidden", "true");
+
+            document.body.appendChild(trail);
+            document.body.appendChild(cursor);
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let trailX = 0;
+            let trailY = 0;
+            let mouseMoved = false;
+
+            document.addEventListener("mousemove", function (event) {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                mouseMoved = true;
+
+                cursor.style.left = mouseX + "px";
+                cursor.style.top = mouseY + "px";
+
+                cursor.style.display = "block";
+                trail.style.display = "block";
+            });
+
+            function animateTrail() {
+                if (mouseMoved) {
+                    trailX += (mouseX - trailX) * 0.15;
+                    trailY += (mouseY - trailY) * 0.15;
+
+                    trail.style.left = trailX + "px";
+                    trail.style.top = trailY + "px";
+                }
+
+                requestAnimationFrame(animateTrail);
+            }
+
+            document.addEventListener("mouseleave", function () {
+                cursor.style.display = "none";
+                trail.style.display = "none";
+            });
+
+            document.addEventListener("mouseenter", function () {
+                if (mouseMoved) {
+                    cursor.style.display = "block";
+                    trail.style.display = "block";
+                }
+            });
+
+            document.querySelectorAll(
+                "a, button, input, textarea, select, .question-card, .certificate-card"
+            ).forEach(function (element) {
+                element.addEventListener("mouseenter", function () {
+                    trail.classList.add("cursor-hover");
+                });
+
+                element.addEventListener("mouseleave", function () {
+                    trail.classList.remove("cursor-hover");
+                });
+            });
+
+            animateTrail();
+        }
+    </script>
+
+</body>
+</html>
